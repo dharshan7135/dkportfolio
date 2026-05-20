@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Navbar from '@/components/ui/Navbar'
 import { gsap } from '@/lib/gsap'
 
-const HeroSection = forwardRef(function HeroSection(_, ref) {
+const HeroSection = forwardRef(function HeroSection(props, ref) {
   const sectionRef = useRef(null)
   const greetRef = useRef(null)
   const roleRef = useRef(null)
@@ -87,7 +87,7 @@ const HeroSection = forwardRef(function HeroSection(_, ref) {
           alt="Vaibhav Khushalani"
           fill
           priority
-          style={{ objectFit: 'cover', objectPosition: 'left top' }}
+          style={{ objectFit: 'cover', objectPosition: 'center top' }}
         />
       </div>
 
@@ -106,10 +106,11 @@ const HeroSection = forwardRef(function HeroSection(_, ref) {
         <p
           ref={greetRef}
           style={{
-            fontSize: '0.8rem',
+            fontFamily: 'var(--font-baloo), sans-serif',
+            fontSize: '1rem',
             fontWeight: 400,
-            color: 'var(--text-primary)',
-            marginBottom: '0.05rem',
+            color: '#1E1E1E',
+            marginBottom: 0,
             letterSpacing: '0.01em',
           }}
         >
@@ -118,10 +119,11 @@ const HeroSection = forwardRef(function HeroSection(_, ref) {
         <p
           ref={roleRef}
           style={{
-            fontSize: '0.8rem',
+            fontFamily: 'var(--font-baloo), sans-serif',
+            fontSize: '1rem',
             fontWeight: 600,
-            color: 'var(--text-primary)',
-            marginBottom: '0.25rem',
+            color: '#1E1E1E',
+            marginBottom: '0.5rem',
             letterSpacing: '0.01em',
           }}
         >
@@ -131,11 +133,12 @@ const HeroSection = forwardRef(function HeroSection(_, ref) {
         <p
           ref={firstName}
           style={{
+            fontFamily: 'var(--font-baloo), sans-serif',
             fontSize: 'var(--hero-name-size)',
-            fontWeight: 900,
-            color: 'var(--text-primary)',
-            lineHeight: 0.9,
-            letterSpacing: '-0.03em',
+            fontWeight: 800,
+            color: '#1E1E1E',
+            lineHeight: 0.95,
+            letterSpacing: '-0.02em',
           }}
         >
           Vaibhav
@@ -143,11 +146,12 @@ const HeroSection = forwardRef(function HeroSection(_, ref) {
         <p
           ref={lastName}
           style={{
+            fontFamily: 'var(--font-baloo), sans-serif',
             fontSize: 'var(--hero-name-size)',
-            fontWeight: 900,
-            color: 'var(--text-primary)',
-            lineHeight: 0.9,
-            letterSpacing: '-0.03em',
+            fontWeight: 800,
+            color: '#1E1E1E',
+            lineHeight: 0.95,
+            letterSpacing: '-0.02em',
           }}
         >
           Khushalani
@@ -169,7 +173,7 @@ const HeroSection = forwardRef(function HeroSection(_, ref) {
           style={{
             fontSize: '0.7rem',
             fontWeight: 600,
-            color: 'var(--text-primary)',
+            color: '#1E1E1E',
             letterSpacing: '0.05em',
           }}
         >
@@ -179,7 +183,7 @@ const HeroSection = forwardRef(function HeroSection(_, ref) {
           style={{
             fontSize: '0.7rem',
             fontWeight: 600,
-            color: 'var(--text-primary)',
+            color: '#1E1E1E',
             letterSpacing: '0.05em',
           }}
         >
