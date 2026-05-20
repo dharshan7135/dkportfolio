@@ -71,7 +71,7 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
     >
       <Navbar />
 
-      {/* Photo — absolute right, full height */}
+      {/* Photo — absolute right, full height, bleeds to edge */}
       <div
         ref={photoRef}
         style={{
@@ -79,7 +79,7 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
           right: 0,
           top: 0,
           height: '100%',
-          width: '55%',
+          width: '62%',
         }}
       >
         <Image
@@ -87,11 +87,11 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
           alt="Vaibhav Khushalani"
           fill
           priority
-          style={{ objectFit: 'cover', objectPosition: 'center top' }}
+          style={{ objectFit: 'cover', objectPosition: 'left top' }}
         />
       </div>
 
-      {/* Text content — left side */}
+      {/* Text content — lower-left, matching reference */}
       <div
         style={{
           position: 'relative',
@@ -99,9 +99,10 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
-          paddingLeft: '3rem',
-          paddingBottom: '4rem',
+          justifyContent: 'flex-end',
+          paddingLeft: '2.5rem',
+          paddingBottom: '5.5rem',
+          width: '45%',
         }}
       >
         <p
@@ -110,11 +111,11 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
             fontSize: 'var(--hero-role-size)',
             fontWeight: 400,
             color: 'var(--text-primary)',
-            marginBottom: '0.15rem',
-            letterSpacing: '0.02em',
+            marginBottom: '0.1rem',
+            letterSpacing: '0.01em',
           }}
         >
-          Hi, I&apos;m
+          {"Hi, I'm"}
         </p>
         <p
           ref={roleRef}
@@ -122,8 +123,8 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
             fontSize: 'var(--hero-role-size)',
             fontWeight: 600,
             color: 'var(--text-primary)',
-            marginBottom: '0.75rem',
-            letterSpacing: '0.02em',
+            marginBottom: '0.5rem',
+            letterSpacing: '0.01em',
           }}
         >
           Software Developer
@@ -135,7 +136,7 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
             fontSize: 'var(--hero-name-size)',
             fontWeight: 900,
             color: 'var(--text-primary)',
-            lineHeight: 0.95,
+            lineHeight: 0.92,
             letterSpacing: '-0.03em',
           }}
         >
@@ -147,7 +148,7 @@ const HeroSection = forwardRef(function HeroSection(props, ref) {
             fontSize: 'var(--hero-name-size)',
             fontWeight: 900,
             color: 'var(--text-primary)',
-            lineHeight: 0.95,
+            lineHeight: 0.92,
             letterSpacing: '-0.03em',
           }}
         >

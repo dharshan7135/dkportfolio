@@ -35,7 +35,7 @@ export default function Navbar() {
       style={{ color: 'var(--navbar-text)' }}
     >
       <span className="text-xs font-semibold tracking-widest uppercase">
-        INDIA TIME – {time}
+        INDIA TIME - {time}
       </span>
 
       <NavigationMenu>
