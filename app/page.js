@@ -1,32 +1,23 @@
 'use client'
 
-import { useRef } from 'react'
 import Navbar       from '@/components/ui/Navbar'
 import VideoIntro   from '@/components/sections/VideoIntro'
 import HeroSection  from '@/components/sections/HeroSection'
 import AboutSection from '@/components/sections/AboutSection'
 
 export default function Home() {
-  const heroWrapRef = useRef(null)
-
   return (
     <>
       <Navbar />
       {/*
-        Each wrapper is 100vh tall. The section inside is position:sticky so it
-        stays glued to the top while you scroll. Each successive section slides
-        over the previous one (increasing z-index).
+        Single 300vh container — all sections share the same sticky context.
+        Each section is position:sticky top:0 with increasing z-index, so every
+        section slides UP over the previous one as you scroll down.
       */}
       <main style={{ height: '100vh', overflowY: 'scroll' }}>
-        <div style={{ height: '100vh', position: 'relative' }}>
-          <VideoIntro heroRef={heroWrapRef} />
-        </div>
-
-        <div ref={heroWrapRef} style={{ height: '100vh', position: 'relative' }}>
+        <div style={{ height: '300vh' }}>
+          <VideoIntro />
           <HeroSection />
-        </div>
-
-        <div style={{ height: '100vh', position: 'relative' }}>
           <AboutSection />
         </div>
       </main>

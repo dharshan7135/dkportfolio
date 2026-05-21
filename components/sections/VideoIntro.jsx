@@ -7,7 +7,11 @@ import styles from '@/styles/sections/VideoIntro.module.css'
 
 const CinematicLayer = dynamic(() => import('@/components/three/CinematicLayer'), { ssr: false })
 
-export default function VideoIntro({ heroRef }) {
+function scrollNext() {
+  document.querySelector('main')?.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
+}
+
+export default function VideoIntro() {
   const videoRef    = useRef(null)
   const greetRef    = useRef(null)
   const nameRef     = useRef(null)
@@ -62,13 +66,7 @@ export default function VideoIntro({ heroRef }) {
     setMuted(m => !m)
   }
 
-  function handleEnded() {
-    heroRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  function scrollToHero() {
-    heroRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
+  function handleEnded() { scrollNext() }
 
   return (
     <section className={styles.section}>
@@ -166,7 +164,7 @@ export default function VideoIntro({ heroRef }) {
       <button
         ref={scrollRef}
         className={styles.scrollCue}
-        onClick={scrollToHero}
+        onClick={scrollNext}
         aria-label="Scroll to next section"
       >
         <span className={styles.scrollLabel}>Scroll</span>
