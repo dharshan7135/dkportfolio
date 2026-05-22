@@ -134,7 +134,7 @@ export default function WorkExperienceSection() {
       scroller,
       start:     'top top',
       end:       () => `+=${(n - 1) * window.innerHeight}`,
-      scrub:     1,
+      scrub:     true,
       onUpdate: (self) => {
         const activeIdx = Math.round(self.progress * (n - 1))
         setSlideIdx(prev => prev !== activeIdx ? activeIdx : prev)
