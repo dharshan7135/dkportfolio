@@ -29,7 +29,7 @@ const dancing = Dancing_Script({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Vaibhav Khushalani — Full Stack Developer',
+    default: 'Vaibhav Khushalani | Full Stack Developer',
     template: '%s | Vaibhav Khushalani',
   },
   description:
@@ -53,7 +53,7 @@ export const metadata = {
     locale: 'en_IN',
     url: SITE_URL,
     siteName: 'Vaibhav Khushalani',
-    title: 'Vaibhav Khushalani — Full Stack Developer',
+    title: 'Vaibhav Khushalani | Full Stack Developer',
     description:
       'Full Stack Engineer with 4+ years building scalable web and AI-powered systems using MERN, Next.js, and Python. Available worldwide for collaborations.',
     images: [
@@ -61,13 +61,13 @@ export const metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Vaibhav Khushalani — Full Stack Developer Portfolio',
+        alt: 'Vaibhav Khushalani | Full Stack Developer Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vaibhav Khushalani — Full Stack Developer',
+    title: 'Vaibhav Khushalani | Full Stack Developer',
     description:
       'Full Stack Engineer with 4+ years building scalable web and AI-powered systems using MERN, Next.js, and Python. Available worldwide for collaborations.',
     images: ['/opengraph-image'],

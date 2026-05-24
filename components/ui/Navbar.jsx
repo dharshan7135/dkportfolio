@@ -33,7 +33,7 @@ function getIST() {
 }
 
 export default function Navbar() {
-  const [time,    setTime]    = useState('')   // '' on SSR — avoids hydration mismatch
+  const [time,    setTime]    = useState('')   // '' on SSR - avoids hydration mismatch
   const [onIntro, setOnIntro] = useState(true)
   const [onDark,  setOnDark]  = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -42,7 +42,7 @@ export default function Navbar() {
   const hidden      = useRef(false)
   const stopTimer   = useRef(null)
 
-  // Live clock — set immediately on mount, then every second
+  // Live clock - set immediately on mount, then every second
   useEffect(() => {
     setTime(getIST())
     const id = setInterval(() => setTime(getIST()), 1000)

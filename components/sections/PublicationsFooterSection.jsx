@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa'
 import { FiArrowUpRight, FiChevronDown } from 'react-icons/fi'
 import profile from '@/data/profile.json'
+import content from '@/data/content.json'
 import styles from '@/styles/sections/PublicationsFooterSection.module.css'
 
 const PUBS = profile.publications
@@ -255,7 +256,7 @@ export default function PublicationsFooterSection() {
       const vw = window.innerWidth
 
       if (isMobile) {
-        // footer-mobile.webp static background — interstitial fades between pub and footer
+        // footer-mobile.webp static background - interstitial fades between pub and footer
         const interIn  = Math.max(0, Math.min(1, (p - 0.28) / 0.17))
         const interOut = Math.max(0, Math.min(1, (p - 0.60) / 0.12))
         gsap.set(interstitialRef.current, { opacity: interIn * (1 - interOut), pointerEvents: 'none' })
@@ -325,11 +326,11 @@ export default function PublicationsFooterSection() {
     <div ref={wrapperRef} className={styles.wrapper}>
       <div ref={stickyRef} className={styles.sticky}>
 
-        {/* ── Video canvas (footer background — desktop) ── */}
+        {/* ── Video canvas (footer background - desktop) ── */}
         <canvas ref={canvasRef} className={styles.glCanvas} />
         <video ref={videoSrcRef} className={styles.hiddenVideo} />
 
-        {/* ── Mobile background image (footer phase — mobile only) ── */}
+        {/* ── Mobile background image (footer phase - mobile only) ── */}
         <div className={styles.mobileFooterBg}>
           <Image
             src="/assets/footer-mobile.webp"
@@ -341,7 +342,7 @@ export default function PublicationsFooterSection() {
           />
         </div>
 
-        {/* ── Mobile permanent dark overlay — keeps image visually identical across all 3 sections ── */}
+        {/* ── Mobile permanent dark overlay - keeps image visually identical across all 3 sections ── */}
         <div className={styles.mobileDarkOverlay} aria-hidden />
 
         {/* ── Floating image: starts left, moves to center ── */}
@@ -399,31 +400,30 @@ export default function PublicationsFooterSection() {
 
           <div className={styles.interstitialLeft}>
             <div className={styles.interStat}>
-              <span className={styles.interLabel}>Availability</span>
-              <span className={styles.interBig}>Worldwide</span>
+              <span className={styles.interLabel}>{content.interstitial.availabilityLabel}</span>
+              <span className={styles.interBig}>{profile.location.availability}</span>
             </div>
             <div className={styles.interDividerH} />
             <div className={styles.interStat}>
-              <span className={styles.interLabel}>Based in</span>
-              <span className={styles.interBig}>India</span>
+              <span className={styles.interLabel}>{content.interstitial.basedInLabel}</span>
+              <span className={styles.interBig}>{profile.location.based}</span>
             </div>
           </div>
 
           <div className={styles.interstitialRight}>
-            <div className={styles.interNum}>
-              <span className={styles.interCount}>4+</span>
-              <span className={styles.interNumLabel}>Years<br />experience</span>
-            </div>
-            <div className={styles.interDividerV} />
-            <div className={styles.interNum}>
-              <span className={styles.interCount}>15+</span>
-              <span className={styles.interNumLabel}>Projects<br />delivered</span>
-            </div>
-            <div className={styles.interDividerV} />
-            <div className={styles.interNum}>
-              <span className={styles.interCount}>3</span>
-              <span className={styles.interNumLabel}>Companies<br />worked at</span>
-            </div>
+            {profile.stats.map((stat, i) => (
+              <Fragment key={stat.label}>
+                {i > 0 && <div className={styles.interDividerV} />}
+                <div className={styles.interNum}>
+                  <span className={styles.interCount}>{stat.value}</span>
+                  <span className={styles.interNumLabel}>
+                    {(content.interstitial.statLabels[i] ?? stat.label).split('\n').map((line, j) => (
+                      <Fragment key={j}>{line}{j === 0 && <br />}</Fragment>
+                    ))}
+                  </span>
+                </div>
+              </Fragment>
+            ))}
           </div>
 
           <div className={styles.interstitialBottom}>
@@ -450,11 +450,7 @@ export default function PublicationsFooterSection() {
               <br />
               <span className={styles.mobileNameGhost}>{profile.name.last.toUpperCase()}</span>
             </h2>
-            <p className={styles.mobileDesc}>
-              Building cinematic digital experiences,
-              scalable systems, and AI&#8209;powered products
-              with modern web technologies.
-            </p>
+            <p className={styles.mobileDesc}>{profile.description}</p>
             <div className={styles.mobileCtas}>
               <a href={`mailto:${profile.email}`} className={styles.mobileTalkBtn}>
                 Let&apos;s talk <FiArrowUpRight />
@@ -498,11 +494,7 @@ export default function PublicationsFooterSection() {
               </div>
 
               <div className={styles.footerInfo}>
-                <p className={styles.footerDescription}>
-                  Building cinematic digital experiences,
-                  scalable systems, and AI-powered products
-                  with modern web technologies.
-                </p>
+                <p className={styles.footerDescription}>{profile.description}</p>
                 <div className={styles.footerLinks}>
                   {profile.socials.slice(0, 4).map((s, i) => (
                     <span key={s.label} className={styles.footerLinkWrap}>
@@ -532,15 +524,12 @@ export default function PublicationsFooterSection() {
 
             <div ref={rightRef} className={styles.rightCol}>
               <div className={styles.ctaBlock}>
-                <p className={styles.ctaEyebrow}>Available for collaborations</p>
+                <p className={styles.ctaEyebrow}>{content.footer.eyebrow}</p>
                 <p className={styles.ctaHeading}>
-                  Crafting modern
-                  <br />
-                  digital products
-                  <br />
-                  that feel
-                  <br />
-                  <span className={styles.ctaAccent}>alive.</span>
+                  {content.footer.ctaLines.map((line, i) => (
+                    <span key={i}>{line}<br /></span>
+                  ))}
+                  <span className={styles.ctaAccent}>{content.footer.ctaAccent}</span>
                 </p>
                 <a href={`mailto:${profile.email}`} className={styles.talkBtn}>
                   Let&apos;s talk →
@@ -551,7 +540,7 @@ export default function PublicationsFooterSection() {
           </div>
 
           <div ref={bigNameRef} className={styles.signatureWrap}>
-            <h2 className={styles.signatureText}>VAIBHAV KHUSHALANI</h2>
+            <h2 className={styles.signatureText}>{profile.name.full.toUpperCase()}</h2>
           </div>
 
           <div ref={bottomBarRef} className={styles.bottomBar}>
@@ -562,7 +551,7 @@ export default function PublicationsFooterSection() {
               </div>
               <span className={styles.leftDivider} />
               <div className={styles.copyBlock}>
-                <p className={styles.copy}>© {year} VAIBHAV KHUSHALANI</p>
+                <p className={styles.copy}>© {year} {profile.name.full.toUpperCase()}</p>
                 <p className={styles.copyAll}>ALL RIGHTS RESERVED</p>
               </div>
             </div>

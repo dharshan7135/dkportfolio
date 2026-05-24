@@ -1,4 +1,4 @@
-/* ── Outer wrapper (300vh — three scroll steps) ───────── */
+/* ── Outer wrapper (300vh - three scroll steps) ───────── */
 .wrapper {
   height: 300vh;
   position: relative;
@@ -55,7 +55,7 @@
   display: none;
 }
 
-/* ── Mobile background image (footer phase — mobile only) ── */
+/* ── Mobile background image (footer phase - mobile only) ── */
 .mobileFooterBg {
   display: none;
 }
@@ -75,7 +75,7 @@
     object-position: center top;
     filter: brightness(0.65);
   }
-  /* permanent overlay — never animated, keeps image visually identical in all 3 sections */
+  /* permanent overlay - never animated, keeps image visually identical in all 3 sections */
   .mobileDarkOverlay {
     display: block;
     position: absolute;
@@ -737,7 +737,7 @@
   .imageWrap { display: none; }
   .sticky { height: 100svh; min-height: -webkit-fill-available; }
 
-  /* pubContent has no background — mobileDarkOverlay provides uniform darkness beneath all sections */
+  /* pubContent has no background - mobileDarkOverlay provides uniform darkness beneath all sections */
 
   /* Publications */
   .pubHero { padding: 3.2rem 1.25rem 0; }
@@ -770,7 +770,7 @@
     -webkit-box-orient: vertical;
   }
 
-  /* Interstitial — show on mobile, scaled down */
+  /* Interstitial - show on mobile, scaled down */
   .interstitialLeft  { display: flex; left: 1.5rem; }
   .interstitialRight { display: flex; right: 1.5rem; gap: 0.9rem; }
   .interstitialBottom { display: flex; bottom: 2rem; }

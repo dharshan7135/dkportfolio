@@ -9,11 +9,51 @@ import styles from '@/styles/sections/WorkExperienceSection.module.css'
 const EXPS = profile.experience
 
 export default function WorkExperienceSection() {
-  const sectionRef = useRef(null)
-  const lineRef    = useRef(null)
-  const dotRefs    = useRef([])
-  const cardRefs   = useRef([])
-  const tlRef      = useRef(null)
+  const sectionRef        = useRef(null)
+  const lineRef           = useRef(null)
+  const dotRefs           = useRef([])
+  const cardRefs          = useRef([])
+  const tlRef             = useRef(null)
+  const bulletListRefs    = useRef([])
+  const collapsedHeights  = useRef([])
+  const hoverTlsRef       = useRef([])
+
+  // Capture each bullet list's natural collapsed height after first paint
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      bulletListRefs.current.forEach((ul, i) => {
+        if (ul) collapsedHeights.current[i] = ul.clientHeight
+      })
+    })
+    return () => cancelAnimationFrame(id)
+  }, [])
+
+  function handleCardEnter(i) {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return
+    const ul  = bulletListRefs.current[i]
+    const dot = dotRefs.current[i]
+    if (!ul) return
+    hoverTlsRef.current[i]?.kill()
+    const tl = gsap.timeline()
+    hoverTlsRef.current[i] = tl
+    tl.to(ul,  { maxHeight: ul.scrollHeight, duration: 0.5, ease: 'power2.out' }, 0)
+      .to(ul,  { borderLeftColor: 'rgba(247,147,30,0.6)', duration: 0.3 }, 0)
+      .to(dot, { scale: 1.1, boxShadow: '0 0 0 8px rgba(247,147,30,0.12), 0 0 28px rgba(247,147,30,0.22)', duration: 0.3, ease: 'back.out(2)' }, 0)
+  }
+
+  function handleCardLeave(i) {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return
+    const ul  = bulletListRefs.current[i]
+    const dot = dotRefs.current[i]
+    if (!ul) return
+    hoverTlsRef.current[i]?.kill()
+    const collapsed = collapsedHeights.current[i] ?? 80
+    const tl = gsap.timeline()
+    hoverTlsRef.current[i] = tl
+    tl.to(ul,  { maxHeight: collapsed, duration: 0.35, ease: 'power2.in' }, 0)
+      .to(ul,  { borderLeftColor: 'rgba(247,147,30,0.2)', duration: 0.25 }, 0)
+      .to(dot, { scale: 1, boxShadow: '0 0 0 6px rgba(247,147,30,0.05), 0 0 22px rgba(247,147,30,0.1)', duration: 0.25, ease: 'power2.in' }, 0)
+  }
 
   useEffect(() => {
     const section = sectionRef.current
@@ -84,7 +124,12 @@ export default function WorkExperienceSection() {
           {/* Entry columns */}
           <div className={styles.entries}>
             {EXPS.map((exp, i) => (
-              <div key={exp.id} className={styles.entry}>
+              <div
+                key={exp.id}
+                className={styles.entry}
+                onMouseEnter={() => handleCardEnter(i)}
+                onMouseLeave={() => handleCardLeave(i)}
+              >
 
                 <div
                   ref={el => { dotRefs.current[i] = el }}
@@ -98,14 +143,17 @@ export default function WorkExperienceSection() {
                   className={styles.card}
                 >
                   <div className={styles.cardHead}>
-                    <span className={styles.period}>{exp.period} – {exp.periodEnd}</span>
+                    <span className={styles.period}>{exp.period} - {exp.periodEnd}</span>
                     <span className={styles.typeTag}>{exp.type}</span>
                     {exp.location && <span className={styles.location}>{exp.location}</span>}
                   </div>
                   <h2 className={styles.company}>{exp.company}</h2>
                   <p  className={styles.role}>{exp.role}</p>
-                  <ul className={styles.bullets}>
-                    {exp.bullets.slice(0, 2).map((b, bi) => (
+                  <ul
+                    ref={el => { bulletListRefs.current[i] = el }}
+                    className={styles.bullets}
+                  >
+                    {exp.bullets.map((b, bi) => (
                       <li key={bi} className={styles.bullet}>{b}</li>
                     ))}
                   </ul>

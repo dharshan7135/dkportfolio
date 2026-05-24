@@ -42,7 +42,7 @@
   object-position: top center;
 }
 
-/* Signature — overlaps bottom-right corner of photo */
+/* Signature - overlaps bottom-right corner of photo */
 .signature {
   position: absolute;
   bottom: 0rem;
@@ -109,7 +109,7 @@
   flex-shrink: 0;
 }
 
-/* Who I Am — infinite marquee */
+/* Who I Am - infinite marquee */
 .marqueeWrap {
   overflow: hidden;
   margin-bottom: 2rem;
@@ -164,7 +164,7 @@
 .typed    { color: #111; }
 .untyped  { color: #c8c8c8; }
 
-/* Cursor lives as ::after on the last typed char — never a sibling node,
+/* Cursor lives as ::after on the last typed char - never a sibling node,
    so it cannot shift adjacent text or change line-wrap decisions. */
 .lastTyped {
   color: #111;

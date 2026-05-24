@@ -16,7 +16,7 @@ function makeSprite() {
   return new THREE.CanvasTexture(c)
 }
 
-// Warm whites + cream — stand out against hero's orange gradient
+// Warm whites + cream - stand out against hero's orange gradient
 const PALETTE = [
   new THREE.Color('#ffffff'),
   new THREE.Color('#fff9f0'),
@@ -136,7 +136,7 @@ export default function HeroBackground() {
       const dt      = Math.min(timer.getDelta(), 0.05)   // cap for tab-switch spikes
       const elapsed = timer.getElapsed()
 
-      // Camera mouse parallax — gentle, layer-like depth
+      // Camera mouse parallax - gentle, layer-like depth
       cam.x += (mouse.x * 0.55 - cam.x) * 0.05
       cam.y += (mouse.y * 0.32 - cam.y) * 0.05
       camera.position.x = cam.x

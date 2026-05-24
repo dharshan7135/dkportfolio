@@ -2,7 +2,7 @@
 
 /* ─── Brand tokens ─────────────────────────────────────── */
 :root {
-  /* Hero gradient — exact reference image */
+  /* Hero gradient - exact reference image */
   --hero-start: #f8d5b0;
   --hero-mid:   #f5954a;
   --hero-end:   #e85500;
@@ -75,7 +75,7 @@ main { scrollbar-width: none; -ms-overflow-style: none; }
     --hero-name-size: clamp(3rem, 10vw, 5rem);
   }
 
-  /* Override inline 100vh — Chrome mobile toolbar hides bottom content */
+  /* Override inline 100vh - Chrome mobile toolbar hides bottom content */
   html, body { height: 100svh !important; }
   main { height: 100svh !important; }
 }

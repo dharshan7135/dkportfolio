@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { gsap } from '@/lib/gsap'
 import profile from '@/data/profile.json'
+import content from '@/data/content.json'
 import styles from '@/styles/sections/VideoIntro.module.css'
 
 const CinematicLayer = dynamic(() => import('@/components/three/CinematicLayer'), { ssr: false })
@@ -21,7 +22,7 @@ export default function VideoIntro() {
   const scrollRef   = useRef(null)
   const hintRef     = useRef(null)
 
-  // muted state drives icon only — DOM muted property is controlled exclusively via ref
+  // muted state drives icon only - DOM muted property is controlled exclusively via ref
   const [muted,    setMuted]    = useState(true)
   const [playing,  setPlaying]  = useState(true)
   const [showHint, setShowHint] = useState(true)
@@ -41,7 +42,7 @@ export default function VideoIntro() {
     return () => tl.kill()
   }, [])
 
-  // Video fade-in — no auto-unmute; user must click the button
+  // Video fade-in - no auto-unmute; user must click the button
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
@@ -51,7 +52,7 @@ export default function VideoIntro() {
     return () => t.kill()
   }, [])
 
-  // Unmute when screen loader is dismissed (fires inside user gesture — Safari safe)
+  // Unmute when screen loader is dismissed (fires inside user gesture - Safari safe)
   useEffect(() => {
     function onLoaderDismissed() {
       const v = videoRef.current
@@ -101,7 +102,7 @@ export default function VideoIntro() {
     if (showHint) dismissHint()
     const v = videoRef.current
     if (!v) return
-    // Set DOM property synchronously inside click gesture — Safari requires this.
+    // Set DOM property synchronously inside click gesture - Safari requires this.
     // React never updates `v.muted` on re-renders (known React limitation for video),
     // so the static `muted` attr in JSX does not fight with this.
     v.muted = !v.muted
@@ -116,7 +117,7 @@ export default function VideoIntro() {
   return (
     <section className={styles.section}>
 
-      {/* 1 — Blurred ambient background */}
+      {/* 1 - Blurred ambient background */}
       <video
         src="/assets/about-me.mp4"
         autoPlay muted playsInline
@@ -124,7 +125,7 @@ export default function VideoIntro() {
         className={styles.bgVideo}
       />
 
-      {/* 2 — Main video: static `muted` attr so React never touches the DOM property on re-renders */}
+      {/* 2 - Main video: static `muted` attr so React never touches the DOM property on re-renders */}
       <video
         ref={videoRef}
         data-testid="intro-video"
@@ -136,22 +137,22 @@ export default function VideoIntro() {
         className={styles.mainVideo}
       />
 
-      {/* 3 — Cinematic gradient overlay */}
+      {/* 3 - Cinematic gradient overlay */}
       <div className={styles.overlay} />
 
-      {/* 4 — Three.js cinematic bokeh layer (desktop only) */}
+      {/* 4 - Three.js cinematic bokeh layer (desktop only) */}
       {!isMobile && <CinematicLayer />}
 
-      {/* 5 — Landing text */}
+      {/* 5 - Landing text */}
       <div className={styles.heroContent}>
-        <p ref={greetRef} className={styles.eyebrow}>{profile.tagline}</p>
+        <p ref={greetRef} className={styles.eyebrow}>{content.site.tagline}</p>
         <h1 ref={nameRef} className={styles.name}>
           {profile.name.first}<br />{profile.name.last}
         </h1>
         <p ref={roleRef} className={styles.role}>{profile.roles.detailed}</p>
       </div>
 
-      {/* 6 — Paused overlay */}
+      {/* 6 - Paused overlay */}
       {!playing && (
         <button className={styles.playOverlay} onClick={togglePlay} aria-label="Play video">
           <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
@@ -161,7 +162,7 @@ export default function VideoIntro() {
         </button>
       )}
 
-      {/* 7 — Sound hint badge (auto-fades after 6 s) */}
+      {/* 7 - Sound hint badge (auto-fades after 6 s) */}
       {showHint && (
         <div ref={hintRef} className={styles.soundHint} onClick={toggleMute} style={{ pointerEvents: 'all', cursor: 'pointer' }}>
           <span className={styles.soundPulse} />
@@ -169,7 +170,7 @@ export default function VideoIntro() {
         </div>
       )}
 
-      {/* 8 — Controls (bottom-right) */}
+      {/* 8 - Controls (bottom-right) */}
       <div className={styles.controls}>
         <button className={styles.ctrlBtn} onClick={togglePlay} aria-label={playing ? 'Pause' : 'Play'}>
           {playing
@@ -203,7 +204,7 @@ export default function VideoIntro() {
         </button>
       </div>
 
-      {/* 9 — Scroll cue */}
+      {/* 9 - Scroll cue */}
       <button
         ref={scrollRef}
         className={styles.scrollCue}

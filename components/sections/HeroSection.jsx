@@ -8,6 +8,7 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import { gsap } from '@/lib/gsap'
 
 import profile from '@/data/profile.json'
+import content from '@/data/content.json'
 import styles from '@/styles/sections/HeroSection.module.css'
 
 const HeroBackground = dynamic(() => import('@/components/three/HeroBackground'), { ssr: false })
@@ -150,10 +151,10 @@ export default function HeroSection() {
 
         {/* Tag Pills */}
         <div ref={pillsRef} className={styles.pills}>
-          {profile.hero.tags.map((tag, i) => (
+          {content.hero.pills.map((tag, i) => (
             <Fragment key={tag}>
               <span className={styles.pill}>{tag}</span>
-              {i < profile.hero.tags.length - 1 && (
+              {i < content.hero.pills.length - 1 && (
                 <span className={styles.pillDot} aria-hidden="true" />
               )}
             </Fragment>
@@ -167,7 +168,7 @@ export default function HeroSection() {
 
         {/* Stats Row */}
         <div ref={statsRef} className={styles.stats}>
-          {profile.hero.stats.map(s => (
+          {[...profile.stats.slice(0, 2), content.hero.specialistStat].map(s => (
             <div key={s.label} className={styles.statCard}>
               <span className={styles.statValue}>{s.value}</span>
               <span className={styles.statLabel}>{s.label}</span>
@@ -181,19 +182,19 @@ export default function HeroSection() {
       <div className={styles.cardsCol}>
         <div ref={taglineCardRef} className={styles.taglineCard}>
           <p className={styles.taglineText}>
-            {splitTagline(profile.hero.tagline, profile.hero.taglineHighlight)}
+            {splitTagline(profile.tagline, content.hero.taglineHighlight)}
           </p>
-          <p className={styles.freelanceNote}>{profile.hero.freelanceNote}</p>
+          <p className={styles.freelanceNote}>{content.hero.freelanceNote}</p>
         </div>
 
-        {profile.hero.available && (
+        {profile.available && (
           <div ref={availCardRef} className={styles.availCard}>
             <div className={styles.availHeader}>
               <span className={styles.availDot} />
-              <span className={styles.availStatus}>{profile.hero.availableLabel}</span>
+              <span className={styles.availStatus}>{content.hero.availableLabel}</span>
             </div>
-            <p className={styles.locationLine}>{profile.location.based}</p>
-            <p className={styles.locationLine}>{profile.location.availability}</p>
+            <p className={styles.locationLine}>Based in {profile.location.based}</p>
+            <p className={styles.locationLine}>Available {profile.location.availability}</p>
           </div>
         )}
       </div>

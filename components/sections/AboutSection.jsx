@@ -8,7 +8,7 @@ import profile from '@/data/profile.json'
 import styles from '@/styles/sections/AboutSection.module.css'
 
 const BIO      = profile.bio
-const WHO_ITEMS = profile.whoAmI
+const WHO_ITEMS = profile.skills
 
 const ICON_MAP = { GitHub: FaGithub, LinkedIn: FaLinkedinIn, Medium: FaMedium, Instagram: FaInstagram, YouTube: FaYoutube }
 
@@ -118,7 +118,7 @@ export default function AboutSection() {
       {/* ── Right: content ───────────────────────────── */}
       <div ref={contentRef} className={styles.content}>
 
-        {/* Who I Am — label + infinite marquee */}
+        {/* Who I Am - label + infinite marquee */}
         <p className={styles.whoLabel}>Who I Am</p>
         <div className={styles.marqueeWrap}>
           <div className={styles.marqueeTrack}>
@@ -131,7 +131,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Bio text — typewriter: all chars always in DOM, only color changes */}
+        {/* Bio text - typewriter: all chars always in DOM, only color changes */}
         <div className={styles.bioWrap}>
           <p className={styles.bio}>
             {BIO.split('').map((char, i) => (

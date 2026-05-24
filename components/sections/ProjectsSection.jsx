@@ -35,7 +35,7 @@ export default function ProjectsSection() {
 
     const tl = gsap.timeline({ paused: true })
 
-    // Horizontal slide — xPercent is viewport-independent
+    // Horizontal slide - xPercent is viewport-independent
     tl.to(track, {
       xPercent: -((n - 1) / n * 100),
       ease: 'none',
