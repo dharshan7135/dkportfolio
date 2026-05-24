@@ -6,6 +6,19 @@
   },
   "email": "vaibhavkhush124@gmail.com",
   "tagline": "Portfolio 2026",
+  "hero": {
+    "tags": ["AI Architect", "Full Stack Engineer", "Cinematic Creator"],
+    "tagline": "Building cinematic digital experiences with modern web technologies & AI.",
+    "taglineHighlight": "experiences",
+    "freelanceNote": "Available for freelance & full-time opportunities.",
+    "availableLabel": "Available for work",
+    "stats": [
+      { "value": "4+", "label": "Years Experience" },
+      { "value": "20+", "label": "Projects Completed" },
+      { "value": "AI + Full Stack", "label": "Specialist" }
+    ],
+    "available": true
+  },
   "roles": {
     "short": "Software Developer",
     "detailed": "Full-Stack Engineer · AI Systems · System Design"
