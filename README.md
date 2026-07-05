@@ -92,6 +92,6 @@ MIT. Free to fork, adapt, and use as your own portfolio.
 
 ## Author
 
-**Vaibhav Khushalani** — Full Stack Engineer & AI Builder
+**Dharshan Kumar K** — Full Stack Engineer & AI Builder
 
-[GitHub](https://github.com/VaibhavKhushalani) &nbsp;|&nbsp; [LinkedIn](https://www.linkedin.com/in/vaibhav-khushalani-760217136) &nbsp;|&nbsp; [Medium](https://medium.com/@vaibhavkhushalani) &nbsp;|&nbsp; [Instagram](https://www.instagram.com/vaibhav.create) &nbsp;|&nbsp; [YouTube](https://www.youtube.com/@vaibhav.create)
+[GitHub](https://github.com/dharshan7135) &nbsp;|&nbsp; [LinkedIn](https://www.linkedin.com/in/dharshan-kumar-k-09a317321/) &nbsp;|&nbsp; [Instagram](https://www.instagram.com/_.dharshan._k_?igsh=dTB3ZjhlbnowbnU=)

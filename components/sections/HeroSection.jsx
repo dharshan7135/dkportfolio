@@ -99,7 +99,7 @@ export default function HeroSection() {
       {/* Photo */}
       <div ref={photoRef} className={styles.photo}>
         <Image
-          src="/assets/hero.png" alt={profile.name.full}
+          src="/assets/hero-new.png" alt={profile.name.full}
           fill priority quality={100}
           sizes="(min-width: 768px) 55vw, 100vw"
           className={styles.photoImg}

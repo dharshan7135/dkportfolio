@@ -1,9 +1,10 @@
 import { SITE_URL } from '@/lib/siteConfig'
 import { ImageResponse } from 'next/og'
+import profile from '@/data/profile.json'
 
 export const runtime = 'edge'
 
-export const alt = 'Vaibhav Khushalani | Full Stack Developer'
+export const alt = `${profile.name.full} | Full Stack Developer`
 
 export const size = {
   width: 1200,
@@ -13,7 +14,7 @@ export const size = {
 export const contentType = 'image/png'
 
 const ACCENT = '#f7931e'
-const photoUrl = `${SITE_URL}/assets/about.webp`
+const photoUrl = `${SITE_URL}/assets/about.png`
 
 export default function Image() {
   return new ImageResponse(
@@ -80,7 +81,7 @@ export default function Image() {
                 textTransform: 'uppercase',
               }}
             >
-              SOFTWARE DEVELOPER
+              {profile.roles.short.toUpperCase()}
             </span>
           </div>
 
@@ -100,7 +101,7 @@ export default function Image() {
                 letterSpacing: -4,
               }}
             >
-              VAIBHAV
+              {profile.name.first.toUpperCase()}
             </span>
 
             <span
@@ -111,7 +112,7 @@ export default function Image() {
                 letterSpacing: -4,
               }}
             >
-              KHUSHALANI
+              {profile.name.last.toUpperCase()}
             </span>
           </div>
 
@@ -125,8 +126,8 @@ export default function Image() {
               marginBottom: 34,
             }}
           >
-            Building cinematic digital experiences with modern web
-            technologies & AI.
+            Building intelligent, scalable digital solutions with
+            Code, AI & Automation.
           </div>
 
           {/* TAGS */}
@@ -139,10 +140,10 @@ export default function Image() {
             }}
           >
             {[
-              'AI Architect',
+              'AI Automation',
               'Full Stack',
-              'Next.js',
               'MERN Stack',
+              'Agentic AI',
             ].map((tag) => (
               <div
                 key={tag}
@@ -169,9 +170,9 @@ export default function Image() {
             }}
           >
             {[
-              ['4+', 'Years'],
-              ['20+', 'Projects'],
-              ['AI + FS', 'Specialist'],
+              ['8.47', 'CGPA'],
+              ['4+', 'Projects'],
+              ['3', 'Hackathon Wins'],
             ].map(([value, label]) => (
               <div
                 key={label}
@@ -222,7 +223,7 @@ export default function Image() {
             src={photoUrl}
             width={420}
             height={630}
-            alt="Vaibhav Khushalani"
+            alt={profile.name.full}
             style={{
               objectFit: 'cover',
             }}
@@ -250,7 +251,7 @@ export default function Image() {
             letterSpacing: 2,
           }}
         >
-          vaibhav-create.vercel.app
+          {SITE_URL.replace('https://', '').replace('http://', '')}
         </div>
       </div>
     ),

@@ -7,7 +7,9 @@
 
 @supports (height: 100svh) {
   @media (max-width: 767px) {
-    .wrapper { height: 300svh; }
+    .wrapper {
+      height: 300svh;
+    }
   }
 }
 
@@ -59,9 +61,11 @@
 .mobileFooterBg {
   display: none;
 }
+
 .mobileDarkOverlay {
   display: none;
 }
+
 @media (max-width: 767px) {
   .mobileFooterBg {
     display: block;
@@ -70,11 +74,13 @@
     z-index: 1;
     pointer-events: none;
   }
+
   .mobileFooterBgImg {
     object-fit: cover;
     object-position: center top;
     filter: brightness(0.65);
   }
+
   /* permanent overlay - never animated, keeps image visually identical in all 3 sections */
   .mobileDarkOverlay {
     display: block;
@@ -100,7 +106,7 @@
 
 .imageEl {
   object-fit: cover;
-  object-position: center center;
+  object-position: center 30%;
   filter: saturate(0.38) brightness(0.62);
 }
 
@@ -116,12 +122,10 @@
 .vignetteOverlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at center,
-    transparent 0%,
-    rgba(0, 0, 0, 0.2) 55%,
-    rgba(0, 0, 0, 0.82) 100%
-  );
+  background: radial-gradient(circle at center,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 55%,
+      rgba(0, 0, 0, 0.82) 100%);
   z-index: 3;
   pointer-events: none;
 }
@@ -193,10 +197,24 @@
   backface-visibility: hidden;
 }
 
-.item:hover .title   { color: var(--accent); }
-.item:hover .num     { color: var(--accent); opacity: 1; }
-.item:hover .year    { opacity: 0.4; transform: translateY(-4px); }
-.item:hover .readBtn { opacity: 1; transform: translateY(0); }
+.item:hover .title {
+  color: var(--accent);
+}
+
+.item:hover .num {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.item:hover .year {
+  opacity: 0.4;
+  transform: translateY(-4px);
+}
+
+.item:hover .readBtn {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .num {
   font-size: clamp(1rem, 2vw, 1.6rem);
@@ -323,8 +341,13 @@
   padding: clamp(1.5rem, 3vw, 3rem);
 }
 
-.leftCol { align-items: flex-start; }
-.rightCol { align-items: flex-start; }
+.leftCol {
+  align-items: flex-start;
+}
+
+.rightCol {
+  align-items: flex-start;
+}
 
 .identityBlock {
   display: flex;
@@ -414,7 +437,9 @@
   transition: color 0.3s ease;
 }
 
-.footerLink:hover { color: var(--accent); }
+.footerLink:hover {
+  color: var(--accent);
+}
 
 .socialIcon {
   display: flex;
@@ -423,7 +448,9 @@
   transition: opacity 0.3s ease;
 }
 
-.footerLink:hover .socialIcon { opacity: 1; }
+.footerLink:hover .socialIcon {
+  opacity: 1;
+}
 
 .footerMail {
   display: flex;
@@ -459,7 +486,9 @@
   color: #fff;
 }
 
-.ctaAccent { color: var(--accent); }
+.ctaAccent {
+  color: var(--accent);
+}
 
 .talkBtn {
   position: relative;
@@ -492,8 +521,13 @@
   z-index: -1;
 }
 
-.talkBtn:hover { color: #000; }
-.talkBtn:hover::after { transform: scaleX(1); }
+.talkBtn:hover {
+  color: #000;
+}
+
+.talkBtn:hover::after {
+  transform: scaleX(1);
+}
 
 .signatureWrap {
   position: absolute;
@@ -625,12 +659,19 @@
 }
 
 @keyframes sunSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ── Mobile hero layout (hidden on desktop) ──────────── */
-.mobileLayout { display: none; }
+.mobileLayout {
+  display: none;
+}
 
 /* ── Image-only interstitial (step 2) ────────────────── */
 .interstitial {
@@ -753,23 +794,52 @@
 }
 
 @keyframes interLinePulse {
-  0%, 100% { opacity: 0.35; transform: scaleY(1); }
-  50%       { opacity: 1;    transform: scaleY(1.15); }
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1.15);
+  }
 }
 
 /* ── Mobile ───────────────────────────────────────────── */
 @media (max-width: 767px) {
-  .glCanvas  { display: none; }
-  .imageWrap { display: none; }
-  .sticky { height: 100svh; min-height: -webkit-fill-available; }
+  .glCanvas {
+    display: none;
+  }
+
+  .imageWrap {
+    display: none;
+  }
+
+  .sticky {
+    height: 100svh;
+    min-height: -webkit-fill-available;
+  }
 
   /* pubContent has no background - mobileDarkOverlay provides uniform darkness beneath all sections */
 
   /* Publications */
-  .pubHero { padding: 3.2rem 1.25rem 0; }
-  .label   { font-size: 0.58rem; }
-  .heading { font-size: clamp(1.6rem, 8vw, 2.2rem); }
-  .divider { margin: 0.5rem 1.25rem 0; }
+  .pubHero {
+    padding: 3.2rem 1.25rem 0;
+  }
+
+  .label {
+    font-size: 0.58rem;
+  }
+
+  .heading {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+
+  .divider {
+    margin: 0.5rem 1.25rem 0;
+  }
 
   .list {
     flex: 1;
@@ -785,10 +855,20 @@
     padding-top: 0.55rem;
     padding-bottom: 0.2rem;
   }
-  .itemRight { display: none; }
-  .num       { font-size: 0.85rem; }
-  .title     { font-size: 0.78rem; }
-  .desc      {
+
+  .itemRight {
+    display: none;
+  }
+
+  .num {
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 0.78rem;
+  }
+
+  .desc {
     font-size: 0.72rem;
     -webkit-line-clamp: 1;
     overflow: hidden;
@@ -797,13 +877,37 @@
   }
 
   /* Interstitial - show on mobile, scaled down */
-  .interstitialLeft  { display: flex; left: 1.5rem; }
-  .interstitialRight { display: flex; right: 1.5rem; gap: 0.9rem; }
-  .interstitialBottom { display: flex; bottom: 2rem; }
-  .interBig    { font-size: clamp(1.1rem, 5.5vw, 1.6rem); }
-  .interCount  { font-size: clamp(1.4rem, 7vw, 2.2rem); }
-  .interNumLabel { font-size: 0.52rem; }
-  .interLabel  { font-size: 0.55rem; }
+  .interstitialLeft {
+    display: flex;
+    left: 1.5rem;
+  }
+
+  .interstitialRight {
+    display: flex;
+    right: 1.5rem;
+    gap: 0.9rem;
+  }
+
+  .interstitialBottom {
+    display: flex;
+    bottom: 2rem;
+  }
+
+  .interBig {
+    font-size: clamp(1.1rem, 5.5vw, 1.6rem);
+  }
+
+  .interCount {
+    font-size: clamp(1.4rem, 7vw, 2.2rem);
+  }
+
+  .interNumLabel {
+    font-size: 0.52rem;
+  }
+
+  .interLabel {
+    font-size: 0.55rem;
+  }
 
   /* Footer */
   .footerContent {
@@ -811,14 +915,18 @@
     flex-direction: column;
     padding: 4rem 0 0;
     /* subtle extra darkening only at very bottom for footer text readability */
-    background: linear-gradient(
-      to bottom,
-      transparent 55%,
-      rgba(0, 0, 0, 0.42) 100%
-    );
+    background: linear-gradient(to bottom,
+        transparent 55%,
+        rgba(0, 0, 0, 0.42) 100%);
   }
-  .mainGrid    { display: none; }
-  .signatureWrap { display: none; }
+
+  .mainGrid {
+    display: none;
+  }
+
+  .signatureWrap {
+    display: none;
+  }
 
   /* Mobile hero-like layout */
   .mobileLayout {
@@ -829,11 +937,13 @@
     gap: 1rem;
     padding: 0 1.5rem 5.5rem;
   }
+
   .mobileBrand {
     display: flex;
     align-items: center;
     gap: 0.6rem;
   }
+
   .mobileRoleDot {
     width: 8px;
     height: 8px;
@@ -841,6 +951,7 @@
     background: var(--accent);
     flex-shrink: 0;
   }
+
   .mobileRoleText {
     font-size: 0.65rem;
     font-weight: 700;
@@ -848,6 +959,7 @@
     text-transform: uppercase;
     color: var(--accent);
   }
+
   .mobileName {
     font-size: clamp(2.8rem, 11vw, 4rem);
     font-weight: 900;
@@ -857,18 +969,24 @@
     color: #fff;
     margin: 0;
   }
-  .mobileNameGhost { color: rgba(255, 255, 255, 0.25); }
+
+  .mobileNameGhost {
+    color: rgba(255, 255, 255, 0.25);
+  }
+
   .mobileDesc {
     font-size: 0.82rem;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
   }
+
   .mobileCtas {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
+
   .mobileViewBtn {
     display: flex;
     align-items: center;
@@ -889,7 +1007,11 @@
     transition: background 0.2s;
     box-sizing: border-box;
   }
-  .mobileViewBtn:hover { background: var(--accent-hover); }
+
+  .mobileViewBtn:hover {
+    background: var(--accent-hover);
+  }
+
   .mobileTalkBtn {
     display: flex;
     align-items: center;
@@ -910,12 +1032,18 @@
     transition: background 0.2s, color 0.2s;
     box-sizing: border-box;
   }
-  .mobileTalkBtn:hover { background: var(--accent); color: #000; }
+
+  .mobileTalkBtn:hover {
+    background: var(--accent);
+    color: #000;
+  }
+
   .mobileSocialRow {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .mobileSocialLink {
     display: flex;
     flex-direction: column;
@@ -926,17 +1054,23 @@
     padding: 0.4rem 1.5rem;
     transition: color 0.2s;
   }
-  .mobileSocialLink:hover { color: #fff; }
+
+  .mobileSocialLink:hover {
+    color: #fff;
+  }
+
   .mobileSocialIconEl {
     display: flex;
     align-items: center;
   }
+
   .mobileSocialLabelEl {
     font-size: 0.5rem;
     letter-spacing: 0.15em;
     font-weight: 700;
     text-transform: uppercase;
   }
+
   .mobileSocialDivider {
     width: 1px;
     height: 30px;
@@ -944,6 +1078,7 @@
     flex-shrink: 0;
     align-self: center;
   }
+
   .mobileScrollHint {
     display: flex;
     flex-direction: column;
@@ -952,6 +1087,7 @@
     color: rgba(255, 255, 255, 0.5);
     padding-top: 0.2rem;
   }
+
   .mobileScrollText {
     font-size: 0.48rem;
     letter-spacing: 0.2em;
@@ -967,16 +1103,40 @@
     right: 0;
     padding: 0.75rem 1.5rem;
   }
-  .bottomRight { display: flex; gap: 0.8rem; }
-  .builtWith   { font-size: 0.52rem; }
-  .sunIcon     { font-size: 0.9rem; }
+
+  .bottomRight {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .builtWith {
+    font-size: 0.52rem;
+  }
+
+  .sunIcon {
+    font-size: 0.9rem;
+  }
 }
 
 /* ── Tablet ───────────────────────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .pubHero      { padding: clamp(2rem, 5vh, 3.5rem) clamp(2rem, 5vw, 5rem) 0; }
-  .divider      { margin: clamp(0.8rem, 2vh, 1.5rem) clamp(2rem, 5vw, 5rem) 0; }
-  .list         { padding: 0 clamp(2rem, 5vw, 5rem) 1.5rem; }
-  .item         { grid-template-columns: 3rem minmax(0, 1fr) auto; }
-  .title        { font-size: clamp(0.78rem, 1.4vw, 1rem); }
+  .pubHero {
+    padding: clamp(2rem, 5vh, 3.5rem) clamp(2rem, 5vw, 5rem) 0;
+  }
+
+  .divider {
+    margin: clamp(0.8rem, 2vh, 1.5rem) clamp(2rem, 5vw, 5rem) 0;
+  }
+
+  .list {
+    padding: 0 clamp(2rem, 5vw, 5rem) 1.5rem;
+  }
+
+  .item {
+    grid-template-columns: 3rem minmax(0, 1fr) auto;
+  }
+
+  .title {
+    font-size: clamp(0.78rem, 1.4vw, 1rem);
+  }
 }

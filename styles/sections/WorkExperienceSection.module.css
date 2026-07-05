@@ -34,8 +34,8 @@
 
 .bgImgEl {
   object-fit: cover;
-  object-position: center;
-  opacity: 0.07;
+  object-position: center top;
+  opacity: 0.32;
 }
 
 /* ── Header ────────────────────────────────────── */
@@ -83,16 +83,15 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 26px;           /* center of 52px dot */
+  top: 26px;
+  /* center of 52px dot */
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--accent) 6%,
-    rgba(247, 147, 30, 0.55) 50%,
-    rgba(247, 147, 30, 0.2) 94%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--accent) 6%,
+      rgba(247, 147, 30, 0.55) 50%,
+      rgba(247, 147, 30, 0.2) 94%,
+      transparent 100%);
   box-shadow: 0 0 12px rgba(247, 147, 30, 0.28);
   transform-origin: left center;
   pointer-events: none;
@@ -232,7 +231,8 @@
   border-left: 2px solid rgba(247, 147, 30, 0.2);
   min-width: 0;
   overflow: hidden;
-  max-height: 5rem; /* GSAP expands on hover */
+  max-height: 5rem;
+  /* GSAP expands on hover */
 }
 
 .bullet {
@@ -277,7 +277,9 @@
     overflow-x: hidden;
   }
 
-  .snakeLine { display: none; }
+  .snakeLine {
+    display: none;
+  }
 
   .entries {
     flex-direction: column;
@@ -296,19 +298,43 @@
     height: 40px;
   }
 
-  .dot::after { display: none; }
+  .dot::after {
+    display: none;
+  }
 
-  .card { padding-top: 0; }
+  .card {
+    padding-top: 0;
+  }
 
-  .company  { font-size: 1.1rem; }
-  .bullets  { max-height: none; overflow: visible; }
-  .bullet   { font-size: 0.88rem; }
-  .stack    { display: none; }
+  .company {
+    font-size: 1.1rem;
+  }
+
+  .bullets {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .bullet {
+    font-size: 0.88rem;
+  }
+
+  .stack {
+    display: none;
+  }
 }
 
 /* ── Tablet (768–1023px) ────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .header   { padding-top: clamp(1.5rem, 5vh, 3rem); }
-  .company  { font-size: 1.3rem; }
-  .entries  { gap: 1.5rem; }
+  .header {
+    padding-top: clamp(1.5rem, 5vh, 3rem);
+  }
+
+  .company {
+    font-size: 1.3rem;
+  }
+
+  .entries {
+    gap: 1.5rem;
+  }
 }

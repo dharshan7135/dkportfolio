@@ -99,7 +99,7 @@
   z-index: 3;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: clamp(1rem, 2.5vh, 2.5rem);
   cursor: default;
   --hero-name-size: clamp(4rem, 8vw, 9rem);
 }
@@ -243,7 +243,7 @@
 /* ─── Cards Column ───────────────────────────────────────── */
 .cardsCol {
   position: absolute;
-  left: 51%;
+  left: 44%;
   top: 22vh;
   width: clamp(210px, 19vw, 295px);
   z-index: 2;

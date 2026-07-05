@@ -3,6 +3,7 @@ import "./globals.css";
 import Cursor from "@/components/ui/Cursor";
 import { SITE_URL } from '@/lib/siteConfig';
 import { Analytics } from "@vercel/analytics/next";
+import profile from '@/data/profile.json';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,47 +30,49 @@ const dancing = Dancing_Script({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Vaibhav Khushalani | Full Stack Developer',
-    template: '%s | Vaibhav Khushalani',
+    default: `${profile.name.full} | Full Stack Developer`,
+    template: `%s | ${profile.name.full}`,
   },
   description:
-    'Full Stack Engineer with 4+ years building scalable web and AI-powered systems using MERN, Next.js, and Python. Available worldwide for collaborations.',
+    'Full Stack Developer & AI Automation Enthusiast building intelligent, scalable digital solutions with React, Node.js, Express.js, and MongoDB. Hackathon winner & Odoo certified.',
   keywords: [
-    'Vaibhav Khushalani',
+    profile.name.full,
     'Full Stack Developer',
-    'Software Engineer',
+    'AI Automation',
     'MERN Stack',
-    'Next.js Developer',
+    'Agentic AI',
     'React Developer',
     'Node.js',
-    'AI Systems',
+    'n8n Workflows',
+    'Odoo ERP',
+    'Hackathon Winner',
     'Portfolio',
     'India',
   ],
-  authors: [{ name: 'Vaibhav Khushalani', url: SITE_URL }],
-  creator: 'Vaibhav Khushalani',
+  authors: [{ name: profile.name.full, url: SITE_URL }],
+  creator: profile.name.full,
   openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: SITE_URL,
-    siteName: 'Vaibhav Khushalani',
-    title: 'Vaibhav Khushalani | Full Stack Developer',
+    siteName: profile.name.full,
+    title: `${profile.name.full} | Full Stack Developer`,
     description:
-      'Full Stack Engineer with 4+ years building scalable web and AI-powered systems using MERN, Next.js, and Python. Available worldwide for collaborations.',
+      'Full Stack Developer & AI Automation Enthusiast building intelligent, scalable digital solutions with React, Node.js, Express.js, and MongoDB. Hackathon winner & Odoo certified.',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Vaibhav Khushalani | Full Stack Developer Portfolio',
+        alt: `${profile.name.full} | Full Stack Developer Portfolio`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vaibhav Khushalani | Full Stack Developer',
+    title: `${profile.name.full} | Full Stack Developer`,
     description:
-      'Full Stack Engineer with 4+ years building scalable web and AI-powered systems using MERN, Next.js, and Python. Available worldwide for collaborations.',
+      'Full Stack Developer & AI Automation Enthusiast building intelligent, scalable digital solutions with React, Node.js, Express.js, and MongoDB. Hackathon winner & Odoo certified.',
     images: ['/opengraph-image'],
   },
   robots: {
@@ -117,17 +120,11 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Person',
-              name: 'Vaibhav Khushalani',
+              name: profile.name.full,
               url: SITE_URL,
-              email: 'vaibhavkhush124@gmail.com',
-              jobTitle: 'Full Stack Developer',
-              sameAs: [
-                'https://github.com/VaibhavKhushalani',
-                'https://www.linkedin.com/in/vaibhav-khushalani-760217136',
-                'https://medium.com/@vaibhavkhushalani',
-                'https://www.instagram.com/vaibhav.create',
-                'https://www.youtube.com/@vaibhav.create',
-              ],
+              email: profile.email,
+              jobTitle: profile.roles.short,
+              sameAs: profile.socials.map(s => s.href),
             }),
           }}
         />

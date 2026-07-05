@@ -14,12 +14,12 @@ import { FaBars, FaTimes } from 'react-icons/fa'
 
 // idx matches snap position in page.js (0=video,1=hero,2=about,3-4=projects,5=work-exp,6=publications,7=footer)
 const NAV_ITEMS = [
-  { label: 'Home',         idx: 0 },
-  { label: 'About',        idx: 2 },
-  { label: 'Projects',     idx: 3 },
-  { label: 'Experience',   idx: 5 },
+  { label: 'Home', idx: 0 },
+  { label: 'About', idx: 2 },
+  { label: 'Projects', idx: 3 },
+  { label: 'Experience', idx: 5 },
   { label: 'Publications', idx: 6 },
-  { label: 'Contact',      idx: 7 },
+  { label: 'Contact', idx: 7 },
 ]
 
 function getIST() {
@@ -33,14 +33,14 @@ function getIST() {
 }
 
 export default function Navbar() {
-  const [time,    setTime]    = useState('')   // '' on SSR - avoids hydration mismatch
+  const [time, setTime] = useState('')   // '' on SSR - avoids hydration mismatch
   const [onIntro, setOnIntro] = useState(true)
-  const [onDark,  setOnDark]  = useState(false)
+  const [onDark, setOnDark] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const headerRef   = useRef(null)
-  const lastY       = useRef(0)
-  const hidden      = useRef(false)
-  const stopTimer   = useRef(null)
+  const headerRef = useRef(null)
+  const lastY = useRef(0)
+  const hidden = useRef(false)
+  const stopTimer = useRef(null)
 
   // Live clock - set immediately on mount, then every second
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function Navbar() {
 
     const onScroll = () => {
       const currentY = scroller.scrollTop ?? window.scrollY
-      const delta    = currentY - lastY.current
+      const delta = currentY - lastY.current
 
       const sectionIdx = Math.round(currentY / vh)
       setOnIntro(currentY < vh * 0.8)

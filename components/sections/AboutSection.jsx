@@ -3,15 +3,37 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { gsap } from '@/lib/gsap'
-import { FaGithub, FaLinkedinIn, FaMedium, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaLinkedinIn, FaInstagram, FaUser, FaCode, FaTrophy, FaBrain, FaRocket } from 'react-icons/fa'
+import { SiMongodb, SiSocketdotio, SiDocker, SiOdoo } from 'react-icons/si'
+import { FaCogs } from 'react-icons/fa'
 import profile from '@/data/profile.json'
 import styles from '@/styles/sections/AboutSection.module.css'
 
-const BIO      = profile.bio
-const WHO_ITEMS = profile.skills
+const BIO = profile.bio
+const WHO_ITEMS = [
+  "MongoDB Atlas",
+  "Socket.io",
+  "Docker & Git",
+  "Odoo ERP",
+  "AI Automation"
+]
 
-const ICON_MAP = { GitHub: FaGithub, LinkedIn: FaLinkedinIn, Medium: FaMedium, Instagram: FaInstagram, YouTube: FaYoutube }
+const SKILL_ICONS = {
+  "MongoDB Atlas": <SiMongodb style={{ color: '#47A248' }} />,
+  "Socket.io": <SiSocketdotio style={{ color: '#ffffff' }} />,
+  "Docker & Git": <SiDocker style={{ color: '#2496ED' }} />,
+  "Odoo ERP": <SiOdoo style={{ color: '#714B67' }} />,
+  "AI Automation": <FaCogs style={{ color: '#f7931e' }} />
+}
 
+const STAT_ICONS = {
+  code: <FaCode />,
+  trophy: <FaTrophy />,
+  brain: <FaBrain />,
+  rocket: <FaRocket />
+}
+
+const ICON_MAP = { GitHub: FaGithub, LinkedIn: FaLinkedinIn, Instagram: FaInstagram }
 const SOCIALS = profile.socials.map(s => ({ Icon: ICON_MAP[s.label], href: s.href, label: s.label }))
 
 export default function AboutSection() {
@@ -81,14 +103,36 @@ export default function AboutSection() {
 
   return (
     <section ref={sectionRef} className={styles.section}>
+      
+      {/* Decorative dot grid - left */}
+      <div className={styles.dotGridLeft}>
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div key={i} className={styles.dotLine}>
+            {Array.from({ length: 2 }).map((_, j) => (
+              <span key={j} className={styles.gridDot} />
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Decorative dot grid - right bottom */}
+      <div className={styles.dotGridRight}>
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className={styles.dotLine}>
+            {Array.from({ length: 4 }).map((_, j) => (
+              <span key={j} className={styles.gridDot} />
+            ))}
+          </div>
+        ))}
+      </div>
 
       {/* ── Left: photo + signature + socials ───────── */}
       <div ref={photoRef} className={styles.photoCol}>
         <div className={styles.photoWrap}>
           <div className={styles.photoFrame} data-about-photo>
             <Image
-              src="/assets/about.webp"
-              alt="Vaibhav Khushalani"
+              src="/assets/about.png"
+              alt={profile.name.full}
               fill
               quality={100}
               sizes="(min-width: 768px) 30vw, 100vw"
@@ -100,53 +144,92 @@ export default function AboutSection() {
 
         {/* Social icons */}
         <div ref={socialsRef} className={styles.socials}>
-          {SOCIALS.map(({ Icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className={styles.socialLink}
-            >
-              <Icon />
-            </a>
-          ))}
+          {SOCIALS.map(({ Icon, href, label }) => {
+            if (!Icon) return null
+            return (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className={styles.socialLink}
+              >
+                <Icon />
+              </a>
+            )
+          })}
         </div>
       </div>
 
       {/* ── Right: content ───────────────────────────── */}
       <div ref={contentRef} className={styles.content}>
+        
+        {/* Title row with icon */}
+        <div className={styles.whoTitleRow}>
+          <div className={styles.userIconCircle}>
+            <FaUser className={styles.userIcon} />
+          </div>
+          <h2 className={styles.whoTitle}>WHO I AM</h2>
+        </div>
 
-        {/* Who I Am - label + infinite marquee */}
-        <p className={styles.whoLabel}>Who I Am</p>
+        {/* Capsule tags marquee */}
         <div className={styles.marqueeWrap}>
           <div className={styles.marqueeTrack}>
-            {[...WHO_ITEMS, ...WHO_ITEMS].map((item, i) => (
-              <span key={i} className={styles.marqueeItem}>
-                {item}
-                <span className={styles.marqueeDot}>·</span>
-              </span>
-            ))}
+            {[...WHO_ITEMS, ...WHO_ITEMS].map((item, i) => {
+              const Icon = SKILL_ICONS[item] || null
+              return (
+                <span key={i} className={styles.marqueeItem}>
+                  {Icon && <span className={styles.skillIcon}>{Icon}</span>}
+                  <span className={styles.skillName}>{item}</span>
+                  <span className={styles.marqueeDot}>·</span>
+                </span>
+              )
+            })}
           </div>
         </div>
 
         {/* Bio text - typewriter: all chars always in DOM, only color changes */}
         <div className={styles.bioWrap}>
           <p className={styles.bio}>
-            {BIO.split('').map((char, i) => (
-              <span
-                key={i}
-                className={
-                  i < typed
-                    ? (i === typed - 1 && !done ? styles.lastTyped : styles.typed)
-                    : styles.untyped
+            {BIO.split('').map((char, i) => {
+              const highlightStart = BIO.indexOf("Dharshan Kumar")
+              const highlightEnd = highlightStart !== -1 ? highlightStart + "Dharshan Kumar".length : -1
+              const isHighlighted = i >= highlightStart && i < highlightEnd
+
+              let charClass = styles.untyped
+              if (i < typed) {
+                if (i === typed - 1 && !done) {
+                  charClass = isHighlighted ? `${styles.lastTyped} ${styles.highlighted}` : styles.lastTyped
+                } else {
+                  charClass = isHighlighted ? styles.highlighted : styles.typed
                 }
-              >
-                {char}
-              </span>
-            ))}
+              }
+
+              return (
+                <span key={i} className={charClass}>
+                  {char}
+                </span>
+              )
+            })}
           </p>
+        </div>
+
+        {/* Orange Accent Line */}
+        <div className={styles.orangeLine} />
+
+        {/* Bottom stats cards */}
+        <div className={styles.statsGrid}>
+          {profile.aboutStats.map((stat, idx) => {
+            const Icon = STAT_ICONS[stat.icon] || null
+            return (
+              <div key={idx} className={styles.statCard}>
+                {Icon && <div className={styles.statCardIcon}>{Icon}</div>}
+                <div className={styles.statCardValue}>{stat.value}</div>
+                <div className={styles.statCardLabel}>{stat.label}</div>
+              </div>
+            )
+          })}
         </div>
 
       </div>
