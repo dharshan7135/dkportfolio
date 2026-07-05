@@ -14,7 +14,7 @@ export const size = {
 export const contentType = 'image/png'
 
 const ACCENT = '#f7931e'
-const photoUrl = `${SITE_URL}/assets/about.png`
+const photoUrl = `${SITE_URL}/assets/dharshan-about.png`
 
 export default function Image() {
   return new ImageResponse(
