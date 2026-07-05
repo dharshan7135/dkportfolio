@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { gsap } from '@/lib/gsap'
-import { FaGithub, FaLinkedinIn, FaInstagram, FaUser, FaCode, FaTrophy, FaBrain, FaRocket } from 'react-icons/fa'
+import { FaGithub, FaLinkedinIn, FaInstagram, FaUser, FaCode, FaTrophy, FaBrain, FaRocket, FaDownload } from 'react-icons/fa'
 import { SiMongodb, SiSocketdotio, SiDocker, SiOdoo } from 'react-icons/si'
 import { FaCogs } from 'react-icons/fa'
 import profile from '@/data/profile.json'
@@ -142,7 +142,7 @@ export default function AboutSection() {
           <p className={styles.signature}>{profile.name.first}</p>
         </div>
 
-        {/* Social icons */}
+        {/* Social icons + Resume */}
         <div ref={socialsRef} className={styles.socials}>
           {SOCIALS.map(({ Icon, href, label }) => {
             if (!Icon) return null
@@ -159,6 +159,15 @@ export default function AboutSection() {
               </a>
             )
           })}
+          <a
+            href="/Dharshan-Resume.pdf"
+            download="Dharshan_Kumar_Resume.pdf"
+            className={styles.resumeBtn}
+            aria-label="Download Resume"
+          >
+            <FaDownload className={styles.resumeIcon} />
+            <span>Resume</span>
+          </a>
         </div>
       </div>
 
