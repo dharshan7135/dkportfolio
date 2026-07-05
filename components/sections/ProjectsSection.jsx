@@ -134,18 +134,22 @@ export default function ProjectsSection() {
                 ref={el => { bgRefs.current[i] = el }}
                 className={styles.slideBg}
               >
-                <Image
-                  src={proj.image}
-                  alt={proj.title}
-                  fill
-                  quality={100}
-                  sizes="100vw"
-                  className={styles.slideImg}
-                  priority={i === 0}
-                />
                 <div className={styles.slideOverlayLeft}   aria-hidden />
                 <div className={styles.slideOverlayBottom} aria-hidden />
                 <div className={styles.slideVignette}      aria-hidden />
+                
+                <div className={styles.mockupWrapper}>
+                  <Image
+                    src={proj.image}
+                    alt={proj.title}
+                    width={1600}
+                    height={900}
+                    quality={100}
+                    sizes="(min-width: 768px) 50vw, 90vw"
+                    className={styles.slideImg}
+                    priority={i === 0}
+                  />
+                </div>
               </div>
 
               <span className={styles.slideNum} aria-hidden>0{i + 1}</span>
@@ -160,6 +164,12 @@ export default function ProjectsSection() {
                   </div>
                   <h2 className={styles.title}>{proj.title}</h2>
                   <p  className={styles.subtitle}>{proj.subtitle}</p>
+                  <p className={styles.desc}>{proj.desc}</p>
+                  <div className={styles.stack}>
+                    {proj.tech.map(t => (
+                      <span key={t} className={styles.tag}>{t}</span>
+                    ))}
+                  </div>
                   <a
                     href={proj.link}
                     target="_blank"
@@ -171,15 +181,6 @@ export default function ProjectsSection() {
                       <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </a>
-                </div>
-
-                <div className={styles.slideRight}>
-                  <p className={styles.desc}>{proj.desc}</p>
-                  <div className={styles.stack}>
-                    {proj.tech.map(t => (
-                      <span key={t} className={styles.tag}>{t}</span>
-                    ))}
-                  </div>
                 </div>
               </div>
 

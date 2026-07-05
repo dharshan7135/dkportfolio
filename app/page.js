@@ -2,25 +2,25 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from '@/lib/gsap'
-import Navbar                from '@/components/ui/Navbar'
-import VideoIntro            from '@/components/sections/VideoIntro'
-import HeroSection           from '@/components/sections/HeroSection'
-import AboutSection          from '@/components/sections/AboutSection'
-import ProjectsSection       from '@/components/sections/ProjectsSection'
+import Navbar from '@/components/ui/Navbar'
+import VideoIntro from '@/components/sections/VideoIntro'
+import HeroSection from '@/components/sections/HeroSection'
+import AboutSection from '@/components/sections/AboutSection'
+import ProjectsSection from '@/components/sections/ProjectsSection'
 import WorkExperienceSection from '@/components/sections/WorkExperienceSection'
 import PublicationsFooterSection from '@/components/sections/PublicationsFooterSection'
 import ScreenLoader from '@/components/sections/ScreenLoader'
-import profile               from '@/data/profile.json'
+import profile from '@/data/profile.json'
 
 // Snap: 0=video 1=hero 2=about 3..4=projects 5=work-exp 6=publications 7=footer (mobile: 6=publications 7=footer)
 const PROJECT_SLIDES = profile.projects.length
-const TOTAL          = 7 + PROJECT_SLIDES  // 9
+const TOTAL = 7 + PROJECT_SLIDES  // 9
 
 export default function Home() {
-  const mainRef        = useRef(null)
-  const idxRef         = useRef(0)
-  const busyRef        = useRef(false)
-  const tweenRef       = useRef(null)
+  const mainRef = useRef(null)
+  const idxRef = useRef(0)
+  const busyRef = useRef(false)
+  const tweenRef = useRef(null)
   const loopOverlayRef = useRef(null)
   const [showLoader, setShowLoader] = useState(true)
 
@@ -38,8 +38,8 @@ export default function Home() {
         duration: 0.55,
         ease: 'power2.in',
         onComplete: () => {
-          el.scrollTop    = targetScrollTop
-          idxRef.current  = targetIdx
+          el.scrollTop = targetScrollTop
+          idxRef.current = targetIdx
           gsap.to(loopOverlayRef.current, {
             opacity: 0,
             duration: 0.7,
@@ -56,7 +56,7 @@ export default function Home() {
     function goTo(idx) {
       // Wrap-around
       if (idx >= TOTAL) idx = 0
-      if (idx < 0)      idx = TOTAL - 1
+      if (idx < 0) idx = TOTAL - 1
 
       if (idx === idxRef.current || busyRef.current) return
 
@@ -109,8 +109,8 @@ export default function Home() {
 
     const isMobile = window.matchMedia('(max-width: 767px)').matches
 
-    el.addEventListener('wheel',  onWheel,  { passive: false })
-    el.addEventListener('scroll', onScroll, { passive: true  })
+    el.addEventListener('wheel', onWheel, { passive: false })
+    el.addEventListener('scroll', onScroll, { passive: true })
 
     let mTouchY = 0
     function onMobileTouchStart(e) { mTouchY = e.touches[0].clientY }
@@ -118,29 +118,29 @@ export default function Home() {
       const dy = mTouchY - e.changedTouches[0].clientY
       if (Math.abs(dy) < 40) return
       const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 8
-      const atTop    = el.scrollTop < 8
+      const atTop = el.scrollTop < 8
       if (dy > 0 && atBottom) fadeLoop(0, 0)
-      if (dy < 0 && atTop)    fadeLoop(el.scrollHeight - el.clientHeight, TOTAL - 1)
+      if (dy < 0 && atTop) fadeLoop(el.scrollHeight - el.clientHeight, TOTAL - 1)
     }
 
     if (!isMobile) {
       el.addEventListener('touchstart', onTouchStart, { passive: true })
-      el.addEventListener('touchend',   onTouchEnd,   { passive: true })
+      el.addEventListener('touchend', onTouchEnd, { passive: true })
     } else {
       el.addEventListener('touchstart', onMobileTouchStart, { passive: true })
-      el.addEventListener('touchend',   onMobileTouchEnd,   { passive: true })
+      el.addEventListener('touchend', onMobileTouchEnd, { passive: true })
     }
     window.addEventListener('footer-loop-back', onFooterLoop)
 
     return () => {
-      el.removeEventListener('wheel',  onWheel)
+      el.removeEventListener('wheel', onWheel)
       el.removeEventListener('scroll', onScroll)
       if (!isMobile) {
         el.removeEventListener('touchstart', onTouchStart)
-        el.removeEventListener('touchend',   onTouchEnd)
+        el.removeEventListener('touchend', onTouchEnd)
       } else {
         el.removeEventListener('touchstart', onMobileTouchStart)
-        el.removeEventListener('touchend',   onMobileTouchEnd)
+        el.removeEventListener('touchend', onMobileTouchEnd)
       }
       window.removeEventListener('footer-loop-back', onFooterLoop)
       tweenRef.current?.kill()

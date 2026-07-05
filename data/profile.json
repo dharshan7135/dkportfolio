@@ -102,7 +102,7 @@
       "subtitle": "Agentic AI Travel Assistant",
       "type": "AI / Automation",
       "link": "https://github.com/dharshan7135",
-      "image": "/assets/project-zenovex.png",
+      "image": "/assets/project-zenovex-v2.png",
       "tech": ["n8n", "WhatsApp API", "AI Workflows", "OpenAI APIs", "Prompt Engineering"],
       "desc": "Built an agentic AI travel assistant using n8n with multi-step automated decision workflows for dynamic itinerary generation. Integrated WhatsApp & email APIs for real-time user communication, designed AI-driven decision nodes for adaptive recommendations, and won 1st Place at Xenovex Xhackathon Chennai."
     },
@@ -112,7 +112,7 @@
       "subtitle": "Gamified STEM Learning Platform",
       "type": "EdTech",
       "link": "https://github.com/dharshan7135/Rulyn",
-      "image": "/assets/project-rulyn.png",
+      "image": "/assets/project-rulyn-v2.png",
       "tech": ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "Socket.io", "JWT"],
       "desc": "Built a full-stack offline-first LMS using the MERN stack with dual Student/Teacher modules, supporting 7+ interactive STEM game modes with JWT-based role access control, real-time Socket.io progress tracking, and a gamification engine with XP points, badge unlocks, and leaderboards."
     },
@@ -122,17 +122,17 @@
       "subtitle": "AI-Integrated Gym Management",
       "type": "SaaS",
       "link": "https://github.com/dharshan7135",
-      "image": "/assets/project-fitlee.png",
+      "image": "/assets/project-fitlee-v2.png",
       "tech": ["React", "Express.js", "MongoDB", "Tailwind CSS", "AI Chatbot", "REST APIs"],
       "desc": "Built an AI-integrated gym management platform with secure login, membership plan management, and trainer scheduling. Integrated an AI chatbot for automated member query resolution, reducing manual support effort. Designed RESTful APIs across membership, trainer, and booking modules."
     },
     {
       "id": 4,
-      "title": "SecureShare",
+      "title": "ZeroTrace",
       "subtitle": "File Sharing & Threat Monitoring",
       "type": "Security",
       "link": "https://github.com/dharshan7135",
-      "image": "/assets/project-secureshare.png",
+      "image": "/assets/project-zerotrace-v3.png",
       "tech": ["Node.js", "Python", "MongoDB", "RBAC", "Audit Logging", "Anomaly Detection"],
       "desc": "Built a secure file-sharing system with role-based access control (RBAC) and audit logging. Implemented basic threat monitoring and anomaly detection for unauthorized access attempts using Node.js and Python."
     }

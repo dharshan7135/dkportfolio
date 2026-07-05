@@ -4,12 +4,10 @@
   top: 0;
   height: 100vh;
   z-index: 2;
-  background: linear-gradient(
-    to bottom,
-    var(--hero-start) 0%,
-    var(--hero-mid) 55%,
-    var(--hero-end) 100%
-  );
+  background: linear-gradient(to bottom,
+      var(--hero-start) 0%,
+      var(--hero-mid) 55%,
+      var(--hero-end) 100%);
   overflow: hidden;
 }
 
@@ -21,11 +19,18 @@
   height: 100%;
   width: 55%;
   z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .photoImg {
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center bottom;
+  max-height: 93vh;
+  width: 100%;
+  height: auto;
 }
 
 /* ─── Social Sidebar ─────────────────────────────────────── */
@@ -319,8 +324,13 @@
     min-height: -webkit-fill-available;
   }
 
-  .socialSidebar { display: none; }
-  .cardsCol      { display: none; }
+  .socialSidebar {
+    display: none;
+  }
+
+  .cardsCol {
+    display: none;
+  }
 
   .content {
     left: 1.25rem;
@@ -330,36 +340,105 @@
     --hero-name-size: clamp(2rem, 8.5vw, 3.5rem);
   }
 
-  .name { white-space: normal; }
+  .name {
+    white-space: normal;
+  }
 
   .photo {
     width: 72%;
-    height: 72svh;
+    height: 100%;
     top: auto;
     bottom: 0;
     right: 0;
   }
+  .photoImg {
+    max-height: 75svh;
+  }
 
-  .stats       { gap: 0.35rem; flex-wrap: wrap; }
-  .statCard    { padding: 0.4rem 0.7rem; min-width: 4.5rem; }
-  .statValue   { font-size: 0.82rem; }
-  .statLabel   { font-size: 0.52rem; }
-  .pills       { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-top: 0.4rem; }
-  .pill        { font-size: 0.62rem; padding: 0.32rem 0.5rem; text-align: center; white-space: normal; flex: unset; }
-  .pillDot     { display: none; }
-  .viewBtn     { font-size: 0.78rem; padding: 0.55rem 1.2rem; }
+  .stats {
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .statCard {
+    padding: 0.4rem 0.7rem;
+    min-width: 4.5rem;
+  }
+
+  .statValue {
+    font-size: 0.82rem;
+  }
+
+  .statLabel {
+    font-size: 0.52rem;
+  }
+
+  .pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+  }
+
+  .pill {
+    font-size: 0.62rem;
+    padding: 0.32rem 0.5rem;
+    text-align: center;
+    white-space: normal;
+    flex: unset;
+  }
+
+  .pillDot {
+    display: none;
+  }
+
+  .viewBtn {
+    font-size: 0.78rem;
+    padding: 0.55rem 1.2rem;
+  }
 }
 
 @media (max-width: 374px) {
-  .photo   { width: 75%; height: 65svh; }
-  .content { top: 4.5rem; max-width: 60vw; }
+  .photo {
+    width: 75%;
+  }
+  .photoImg {
+    max-height: 65svh;
+  }
+
+  .content {
+    top: 4.5rem;
+    max-width: 60vw;
+  }
 }
 
 /* ─── Responsive: Tablet 768–1023px ─────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .content     { left: 3rem; top: 18vh; max-width: 40vw; --hero-name-size: clamp(3rem, 7vw, 6rem); }
-  .photo       { width: 55%; }
-  .cardsCol    { left: 43%; top: 22vh; width: clamp(175px, 18vw, 240px); }
-  .socialSidebar { width: 2.25rem; }
-  .name        { white-space: normal; }
+  .content {
+    left: 3rem;
+    top: 18vh;
+    max-width: 40vw;
+    --hero-name-size: clamp(3rem, 7vw, 6rem);
+  }
+
+  .photo {
+    width: 55%;
+  }
+  .photoImg {
+    max-height: 90vh;
+  }
+
+  .cardsCol {
+    left: 43%;
+    top: 22vh;
+    width: clamp(175px, 18vw, 240px);
+  }
+
+  .socialSidebar {
+    width: 2.25rem;
+  }
+
+  .name {
+    white-space: normal;
+  }
 }
