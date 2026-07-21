@@ -71,7 +71,7 @@
       "periodEnd": "Feb 2026",
       "bullets": [
         "Won 1st Place at Xenovex Xhackathon, Chennai — demonstrating end-to-end agentic AI prototyping skills.",
-        "Built Zenovex, an agentic AI travel assistant using n8n with multi-step automated decision workflows for dynamic itinerary generation.",
+        "Built Zyvox AI, an agentic AI travel assistant using n8n with multi-step automated decision workflows for dynamic itinerary generation.",
         "Secured 3rd Place at KEC Cybot Hackathon in the AI/Robotics category (February 2026)."
       ],
       "desc": "Won multiple hackathons building agentic AI solutions. 1st Place at Xenovex Xhackathon Chennai and KEC Techno Fest. 3rd Place at KEC Cybot Hackathon.",
@@ -98,7 +98,7 @@
   "projects": [
     {
       "id": 1,
-      "title": "Zenovex",
+      "title": "Zyvox AI",
       "subtitle": "Agentic AI Travel Assistant",
       "type": "AI / Automation",
       "link": "https://github.com/dharshan7135",
@@ -144,7 +144,7 @@
       "platform": "Hackathon",
       "year": "2025",
       "link": "https://github.com/dharshan7135",
-      "desc": "Won 1st Place for building Zenovex, an Agentic AI Travel Automation system demonstrating end-to-end agentic AI prototyping skills using n8n and WhatsApp API integration."
+      "desc": "Won 1st Place for building Zyvox AI, an Agentic AI Travel Automation system demonstrating end-to-end agentic AI prototyping skills using n8n and WhatsApp API integration."
     },
     {
       "id": 2,
